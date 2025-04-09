@@ -1,0 +1,16 @@
+.venv/
+.env
+source/.env
+.idea/
+
+# Test and cache
+*.log
+.pytest_cache/
+.cache/
+coverage.*
+*.cover
+*.py,cover
+
+# OS files
+.DS_Store
+Thumbs.db
