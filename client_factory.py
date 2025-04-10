@@ -1,4 +1,4 @@
-from config import USE_OLLAMA, OPENAI_API_KEY, OLLAMA_BASE_URL
+from config.config import USE_OLLAMA, OPENAI_API_KEY, OLLAMA_BASE_URL
 from openai import OpenAI
 
 
