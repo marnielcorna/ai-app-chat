@@ -29,7 +29,7 @@ def main():
             session.add_assistant_message(response)
     else:
         if not args.prompt:
-            print("Usage: python main.py \"your prompt here\" or --interactive")
+            print("### Usage: python main.py \"your prompt here\" or --interactive")
             return
         prompt = " ".join(args.prompt)
         session.add_user_message(prompt)

@@ -1,10 +1,10 @@
 # AI chat application
-### For OPENAI USE:
+### For OPENAI USE: (API Key needed.)
 1. Install Python 3.11+ by Using Homebrew:\
    ```brew install python``` 
 2. Check python version with: \
    ```python3 --version```
-3. Clone the repo: https://...
+3. Clone the repo: https://github.com/marnielcorna/ai-app-chat.git
 4. Create the virtual environment:\
    ```python3 -m venv .venv``` \
    ```source .venv/bin/activate```
@@ -21,7 +21,7 @@
    ```brew install python```
 2. Install ollama (if we want to use free version):\
    ```ollama pull llama3``` and verify with this: ```ollama list```
-3. Clone the repo: https://...
+3. Clone the repo: https://github.com/marnielcorna/ai-app-chat.git
 4. Create the virtual environment:\
    ```python3 -m venv .venv```\
    ```source .venv/bin/activate```
