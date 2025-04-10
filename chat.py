@@ -1,21 +1,18 @@
-def stream_chat(prompt: str, model: str, client, temperature=0.7, stream=True):
-    response = client.chat.completions.create(
+
+def stream_chat(messages: list, model: str, client, temperature=0.7):
+    stream = client.chat.completions.create(
         model=model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
+        messages=messages,
         temperature=temperature,
-        stream=stream,
+        stream=True
     )
 
-    print("🤖 GPT Response:\n", end="", flush=True)
+    full_response = ""
+    for chunk in stream:
+        if chunk.choices[0].delta.content:
+            content = chunk.choices[0].delta.content
+            print(content, end="", flush=True)
+            full_response += content
 
-    if stream:
-        for chunk in response:
-            if chunk.choices[0].delta.content:
-                print(chunk.choices[0].delta.content, end="", flush=True)
-    else:
-        print(response.choices[0].message.content)
+    print()
+    return full_response
