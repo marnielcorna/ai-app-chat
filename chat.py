@@ -11,7 +11,8 @@ def stream_chat(messages: list, model: str, client, temperature=0.7):
     for chunk in stream:
         if chunk.choices[0].delta.content:
             content = chunk.choices[0].delta.content
-            print(content, end="", flush=True)
+            # For flushing message, uncomment this line and remove printing from interactive_chat.process_input():
+            # print(content, end="", flush=True)
             full_response += content
 
     print()

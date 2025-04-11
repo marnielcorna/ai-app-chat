@@ -1,15 +1,25 @@
 class ChatSession:
-    def __init__(self, client, model: str, session_id=None, system_prompt="You are a helpful assistant.", db=None):
+    def __init__(self, client, model: str, session_id=None, messages=None, db=None, user_id=None):
+        self.user_id = user_id
         self.client = client
         self.model = model
         self.session_id = session_id
         self.db = db
-        self.messages = self._load_messages_from_db() if self.db and self.session_id else [
-            {"role": "system", "content": system_prompt}
-        ]
+        self.messages = messages or []
 
-    def _load_messages_from_db(self):
-        return self.db.get_messages(session_id=self.session_id)
+    @staticmethod
+    def create(client, model: str, session_id=None, db=None, system_prompt=None, user_id=None):
+        system_prompt = system_prompt or "You are a helpful assistant."
+
+        if db:
+            if user_id:
+                messages = db.get_messages(user_id=user_id, limit=50)
+            else:
+                messages = [{"role": "system", "content": system_prompt}]
+        else:
+            messages = [{"role": "system", "content": system_prompt}]
+
+        return ChatSession(client, model, session_id=session_id, messages=messages, db=db, user_id=user_id)
 
     def _store_message(self, role, content):
         if self.db and self.session_id:
@@ -30,3 +40,13 @@ class ChatSession:
             client=self.client,
             temperature=temperature
         )
+
+    def get_last_n_messages(self, n=10):
+        print(f"[DEBUG] Fetching last {n} messages...")
+        if self.db:
+            if self.user_id:
+                return self.db.get_messages(user_id=self.user_id, limit=n)
+        return self.messages[-n:]
+
+
+

@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 from config.db_settings import build_db_url
-from db.models.chat_message import Base
+from db.models.chat_message_model import Base
 
 
 # this is the Alembic Config object, which provides
