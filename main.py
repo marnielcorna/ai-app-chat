@@ -2,7 +2,7 @@ import argparse
 import uuid
 from client_factory import get_client
 from chat_session import ChatSession
-from utils.interactive_chat import InteractiveChat
+from utils.chat_output import ChatOutPut
 from config.config import USE_OLLAMA, SYSTEM_PROMPT
 
 from db.models.base import Base
@@ -40,8 +40,8 @@ def main():
     # Initialize chat session
     session = ChatSession.create(client, model, session_id, db=chat_db, system_prompt=SYSTEM_PROMPT, user_id=args.user)
 
-    interactive_chat = InteractiveChat(session)
-    interactive_chat.run()
+    chat_output = ChatOutPut(session)
+    chat_output.run()
 
 
 if __name__ == "__main__":

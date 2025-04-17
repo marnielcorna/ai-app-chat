@@ -26,7 +26,6 @@ class ChatDB:
         return [{"role": m.role, "content": m.content} for m in reversed(messages)]
 
     def save_message(self, session_id, role, content):
-
         try:
             message = ChatMessageModel(
                 session_id=session_id,

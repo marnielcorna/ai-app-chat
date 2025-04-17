@@ -4,6 +4,7 @@ from db.models.base import Base
 from datetime import datetime
 
 
+""" Not implemented yet.
 class UserModel(Base):
     __tablename__ = "users"
 
@@ -11,3 +12,4 @@ class UserModel(Base):
     username = Column(String, unique=True, nullable=False)
     role = Column(String, nullable=False, default="user")
     created_at = Column(DateTime, default=datetime.utcnow)
+"""

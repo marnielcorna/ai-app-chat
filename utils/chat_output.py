@@ -1,7 +1,7 @@
 from chat import stream_chat
 
 
-class InteractiveChat:
+class ChatOutPut:
     def __init__(self, session):
         self.session = session
 
